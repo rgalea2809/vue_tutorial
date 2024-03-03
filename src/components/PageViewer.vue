@@ -1,5 +1,6 @@
 <template>
     <div
+        v-if="page"
         id="content"
         class="container"
     >
@@ -10,6 +11,13 @@
 
 <script>
 export default {
-    props: ["page"]
+    created() {
+        this.page = this.$pages.getSinglePage(this.$route.params.index)
+    },
+    data() {
+        return {
+            page: null
+        }
+    }
 }
 </script>
